@@ -4,27 +4,29 @@ import { click } from "@testing-library/user-event/dist/click";
 import PhotoCard from "./PhotoCard";
 
 function Photos() {
-    const [photoList, setPhotoList] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+  const [photoList, setPhotoList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        async function getPhotos() {
-          const response = await PixlyApi.getPhotos();
-          setPhotoList(response);
-          setIsLoading(false);
-        }
-    
-        getPhotos();
-      }, []);
+  useEffect(() => {
+    async function getPhotos() {
+      const response = await PixlyApi.getPhotos();
+      setPhotoList(response);
+      setIsLoading(false);
+    }
 
-      console.log(photoList);
+    getPhotos();
+  }, []);
 
-    return (
-        <div>
-            <h1>Photos</h1>
-            {photoList.map(photo => <PhotoCard key={photo.photoId} photo={photo}/>)}
-        </div>
-    )
+  console.log(photoList);
+
+  return (
+    <div>
+      <h1>Photos</h1>
+      {photoList.map(
+        photo => <PhotoCard key={photo.photoId} photo={photo} />
+      )}
+    </div>
+  );
 
 };
 
