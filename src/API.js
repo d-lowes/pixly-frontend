@@ -34,7 +34,8 @@ class PixlyApi {
 
   /** Get all photos. */
   static async getPhotos() {
-    let res = await this.request(`photos/`);
+    let res = await this.request(`photos`);
+    // let res = await axios.get(`${BASE_URL}/photos`)
     return res.photos;
   }
 

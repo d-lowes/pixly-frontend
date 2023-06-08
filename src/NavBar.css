@@ -86,7 +86,7 @@ li a {
 .navigation {
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 4%;
+  top: 2%;
   left: 50%;
   width: 100vw;
 }
@@ -254,7 +254,7 @@ nav {
   .navigation {
     position: absolute;
     transform: translate(-50%, -50%);
-    top: 4%;
+    top: 2%;
     left: 50%;
     width: 100vw;
   }
@@ -309,7 +309,7 @@ nav {
   display: flex;
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 54%;
+  top: 50%;
   left: 50%;
   letter-spacing: 25px;
   font-size: 50px;
@@ -347,7 +347,7 @@ nav {
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
-    top: 4%;
+    top: 2%;
     width: 100vw;
   }
 }
