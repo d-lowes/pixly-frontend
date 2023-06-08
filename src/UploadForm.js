@@ -1,8 +1,11 @@
 import React, { useState, useRef } from "react";
 import './UploadForm.css';
+import { PixlyApi } from "./API";
+
 
 function UploadForm() {
   const canvasRef = useRef();
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -21,16 +24,36 @@ function UploadForm() {
 
         // Draw the image onto the canvas
         ctx.drawImage(img, 0, 0);
+
+        // Save the canvas as a new image
+        canvas.toBlob((blob) => {
+          const convertedFile = new File([blob], file.name, {
+            type: file.type,
+            lastModified: Date.now()
+          });
+
+          setSelectedPhoto(convertedFile);
+        }, file.type);
       };
+
       img.src = event.target.result;
     };
 
+
+    console.log("file", file);
     reader.readAsDataURL(file);
   }
 
-  function handleClick(evt) {
-    // evt.preventDefault();
+  async function handleUpload(evt) {
+    evt.preventDefault();
+    if (selectedPhoto) {
 
+      console.log("photo inside handleupload===", selectedPhoto);
+
+      const formData = new FormData()
+      formData.append('image', selectedPhoto);
+      await PixlyApi.uploadPhoto(formData);
+    }
   }
 
   return (
@@ -56,10 +79,16 @@ function UploadForm() {
             id="canvas"
             style={{ width: '500px', height: '300px' }}>
           </canvas>
+          <div>
+            <button className="upload-photo" onClick={handleUpload}>
+              Upload
+            </button>
+          </div>
         </div>
       </div>
     </div>
+
   );
-}
+};
 
 export default UploadForm;

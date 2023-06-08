@@ -16,7 +16,10 @@ class PixlyApi {
     console.debug("API Call:", endpoint, data, method);
 
     const url = `${BASE_URL}/${endpoint}`;
-    const headers = {};
+    const headers = (method === "post")
+    ? {'Content-Type': 'multipart/form-data',}
+    :
+    {};
     const params = (method === "get")
       ? data
       : {};
@@ -42,6 +45,13 @@ class PixlyApi {
   /** Get a single photo. */
   static async getPhoto(id) {
     let res = await this.request(`photos/${id}`);
+    return res.photo;
+  }
+
+  /** Get a single photo. */
+  static async uploadPhoto(photo) {
+    let res = await this.request(`upload`, photo, "post");
+    // let res = await axios.post(`{}`)
     return res.photo;
   }
 }
