@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { PixlyApi } from "./API";
-
+import { click } from "@testing-library/user-event/dist/click";
+import PhotoCard from "./PhotoCard";
 
 function Photos() {
     const [photoList, setPhotoList] = useState([]);
@@ -16,10 +17,12 @@ function Photos() {
         getPhotos();
       }, []);
 
+      console.log(photoList);
 
     return (
         <div>
             <h1>Photos</h1>
+            {photoList.map(photo => <PhotoCard key={photo.photoId} photo={photo}/>)}
         </div>
     )
 
