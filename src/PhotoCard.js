@@ -1,13 +1,13 @@
 import React from "react";
-import './PhotoCard.css'
+import './PhotoCard.css';
 
 /** Renders a photo card
- * 
+ *
  * Props:
  * -photo => {objectURL: '', metadata: '', photoId: ''}
- * 
- * -handleDelete => function 
- * 
+ *
+ * -handleDelete => function
+ *
  * Photos -> PhotoCard
  */
 function PhotoCard({ photo, handleDelete }) {
@@ -18,7 +18,7 @@ function PhotoCard({ photo, handleDelete }) {
                 alt={photo.photoId}></img>
             <div>
                 <button className="btn btn-ig m-2"
-                onClick={() => handleDelete(photo)}>Delete</button>
+                    onClick={() => handleDelete(photo)}>Delete</button>
             </div>
             <div><br></br></div>
         </div>
