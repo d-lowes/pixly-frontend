@@ -49,13 +49,14 @@ function UploadForm() {
   function applyWashOut() {
     window.Caman(`#canvas`, function () {
       this.brightness(10);
-      this.contrast(30);
+      this.contrast(90);
       this.sepia(60);
       this.saturation(-30);
       this.render();
     });
   }
-  function newFilter1() {
+
+  function applySepia() {
     window.Caman(`#canvas`, function () {
       this.brightness(10);
       this.contrast(30);
@@ -64,12 +65,14 @@ function UploadForm() {
       this.render();
     });
   }
-  function newFilter2() {
+
+  function applyRithm() {
     window.Caman(`#canvas`, function () {
-      this.brightness(10);
+      this.vibrance(81);
+      this.hue(100);
+      this.clip(42);
       this.contrast(30);
-      this.sepia(60);
-      this.saturation(-30);
+      this.exposure(14);
       this.render();
     });
   }
@@ -112,11 +115,11 @@ function UploadForm() {
             <canvas
               ref={canvasRef}
               id="canvas"
-              style={{ width: '500px', height: '300px' }}>
+              style={{maxInlineSize: '500px'}}>
             </canvas>
           </div>
           <div>
-            <button className="upload-photo btn" onClick={handleUpload}>
+            <button className="upload-photo btn btn-ig" onClick={handleUpload}>
               Upload
             </button>
           </div>
@@ -125,9 +128,9 @@ function UploadForm() {
 
       <div className="row filter-btns">
         <div className="col-md-10 m-auto">
-          <button className="m-3 btn" onClick={applyWashOut}>Washout</button>
-          <button className="m-3 btn" onClick={newFilter1}>Sepia</button>
-          <button className="m-3 btn" onClick={newFilter2}>Rithm</button>
+          <button className="m-3 btn btn-ig" onClick={applyWashOut}>Washout</button>
+          <button className="m-3 btn btn-ig" onClick={applySepia}>Sepia</button>
+          <button className="m-3 btn btn-ig" onClick={applyRithm}>Rithm</button>
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ function NavBar() {
     // </nav>
     <nav className="navigation navbar navbar-expand-md">
       <div className="container-fluid">
-          <Link className="active" to="/">Pix.ly</Link>
+          <Link className="active" to="/">Michae.ly</Link>
           <NavLink className="active" to="/photos">Photos</NavLink>
           <NavLink className="active" to="/upload">Upload your own!</NavLink>
       </div>

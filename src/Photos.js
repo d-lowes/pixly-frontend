@@ -25,6 +25,14 @@ function Photos() {
     );
   }
 
+  if(isLoading) {
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    )
+  }
+
   return (
     <div>
       {photoList.map(

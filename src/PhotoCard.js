@@ -1,5 +1,5 @@
 import React from "react";
-import { PixlyApi } from "./API";
+import './PhotoCard.css'
 
 function PhotoCard({ photo, handleDelete }) {
 
@@ -8,7 +8,7 @@ function PhotoCard({ photo, handleDelete }) {
             <img className="img-fluid img-thumbnail" src={photo.objectURL}
                 alt={photo.photoId}></img>
             <div>
-                <button className="btn btn-danger"
+                <button className="btn btn-ig m-2"
                 onClick={() => handleDelete(photo)}>Delete</button>
             </div>
             <div><br></br></div>
