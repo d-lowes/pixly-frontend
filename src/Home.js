@@ -1,14 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './NavBarv2.css';
 
 function Home() {
     return (
         <div>
-            <h3>Feelin Hot Hot Hot!</h3>
-            <h4>Welcome to Pix.ly</h4>
-            <Link to="/upload"><button className="btn btn-primary">New Post</button></Link>
+            <img
+                src="//media.tenor.com/vbtG_dc8u9QAAAAC/the-office-michael-scott.gif"
+                alt="hot" />
+            {/* <h3>Welcome to Pix.ly</h3> */}
         </div>
-    )
+    );
 }
 
 export default Home;

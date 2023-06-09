@@ -21,7 +21,6 @@ function Photos() {
 
   return (
     <div>
-      <h1>Photos</h1>
       {photoList.map(
         photo => <PhotoCard key={photo.photoId} photo={photo} />
       )}

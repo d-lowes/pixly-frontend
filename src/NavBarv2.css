@@ -22,6 +22,8 @@ body {
     box-shadow: 3px 3px 20px #ff3352;
     border-top-left-radius: 0px;
     border-bottom-right-radius: 0px;
+    margin-bottom: 20px;
+    justify-content: center;
 }
 
 .active {
@@ -32,7 +34,7 @@ body {
     font-size: 18px;
     letter-spacing: 1px;
     opacity: 0.9;
-    padding: 0 16px;
+    padding: 0px;
 }
 
 .active:hover {

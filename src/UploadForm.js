@@ -12,16 +12,6 @@ function UploadForm() {
 
   console.log('SELECTED PHOTO', selectedPhoto);
 
-  useEffect(() => {
-    window.Caman(`#robert`, function () {
-      this.brightness(10);
-      this.contrast(30);
-      this.sepia(60);
-      this.saturation(-30);
-      this.render();
-    });
-  }, [robertImage]);
-
   function handleSubmit(evt) {
     evt.preventDefault();
     const file = evt.target.files[0];
@@ -39,7 +29,7 @@ function UploadForm() {
 
         // Draw the image onto the canvas
         ctx.drawImage(img, 0, 0);
-        
+
         // Save the canvas as a new image
         canvas.toBlob((blob) => {
           const convertedFile = new File([blob], file.name, {
@@ -65,6 +55,7 @@ function UploadForm() {
       this.saturation(-30);
       this.render();
     });
+
   }
 
   async function handleUpload(evt) {
@@ -83,20 +74,6 @@ function UploadForm() {
   return (
     <div className="upload-img-container m-4">
 
-      <div className="row">
-        <img
-          src={robertImage}
-          alt=""
-          style={{ width: 200, height: 200 }}
-        />
-        <img
-          id="robert"
-          // ref={robert}
-          src={robertImage}
-          alt=""
-          style={{ width: 200, height: 200 }}
-        />
-      </div>
 
       <div className="row">
         <div className="col-md-10 m-auto">
@@ -140,3 +117,30 @@ function UploadForm() {
 };
 
 export default UploadForm;
+
+
+/*   useEffect(() => {
+    window.Caman(`#robert`, function () {
+      this.brightness(10);
+      this.contrast(30);
+      this.sepia(60);
+      this.saturation(-30);
+      this.render();
+    });
+  }, [robertImage]);
+
+ <div className="row">
+        <img
+          src={robertImage}
+          alt=""
+          style={{ width: 200, height: 200 }}
+        />
+        <img
+          id="robert"
+          // ref={robert}
+          src={robertImage}
+          alt=""
+          style={{ width: 200, height: 200 }}
+        />
+      </div>
+*/
