@@ -17,12 +17,21 @@ function Photos() {
     getPhotos();
   }, []);
 
-  console.log(photoList);
+  async function handleDelete(photo) {
+    await PixlyApi.deletePhoto(photo.photoId);
+    console.log("photo", photo.photoId);
+    setPhotoList(
+      prevPhotoList => prevPhotoList.filter(p => p.photoId !== photo.photoId)
+    );
+  }
 
   return (
     <div>
       {photoList.map(
-        photo => <PhotoCard key={photo.photoId} photo={photo} />
+        photo => <PhotoCard
+          key={photo.photoId}
+          photo={photo}
+          handleDelete={handleDelete} />
       )}
     </div>
   );

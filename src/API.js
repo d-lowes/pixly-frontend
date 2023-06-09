@@ -54,6 +54,13 @@ class PixlyApi {
     // let res = await axios.post(`{}`)
     return res.photo;
   }
+
+  /** Get a single photo. */
+  static async deletePhoto(photoId) {
+    let res = await this.request(`photos/${photoId}`, {}, "delete");
+    // let res = await axios.post(`{}`)
+    return res.photo;
+  }
 }
 
 export { BASE_URL, PixlyApi };

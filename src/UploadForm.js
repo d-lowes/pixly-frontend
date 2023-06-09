@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { PixlyApi } from "./API";
-import robertImage from './images/robert.jpg'
 import './UploadForm.css';
 
 
@@ -62,19 +61,21 @@ function UploadForm() {
     evt.preventDefault();
     if (selectedPhoto) {
 
-      console.log("photo inside handleupload===", selectedPhoto);
+      const canvas = canvasRef.current;
+      canvas.toBlob(async function (blob) {
+        // Create a FormData object to send the Blob as part of the request
+        const formData = new FormData();
+        formData.append('image', blob);
+        console.log("formdata===", formData);
 
-      const formData = new FormData()
-      formData.append('image', selectedPhoto);
-      await PixlyApi.uploadPhoto(formData);
-      navigate('/photos')
+        await PixlyApi.uploadPhoto(formData);
+        navigate('/photos');
+      });
     }
-  }
+  };
 
   return (
     <div className="upload-img-container m-4">
-
-
       <div className="row">
         <div className="col-md-10 m-auto">
           <form>
@@ -114,8 +115,7 @@ function UploadForm() {
     </div>
 
   );
-};
-
+}
 export default UploadForm;
 
 
@@ -143,4 +143,10 @@ export default UploadForm;
           style={{ width: 200, height: 200 }}
         />
       </div>
+
+ ******* function CODE STARTS HERE
+
+        formData.append('image', selectedPhoto);
+
+  ****** FUNCTION CODE ENDS HERE
 */
