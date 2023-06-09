@@ -3,19 +3,33 @@ import { useNavigate } from "react-router-dom";
 import { PixlyApi } from "./API";
 import './UploadForm.css';
 
+/** Form for uploading and editing photos.
+ *
+ * State:
+ * - selectedPhoto: holds the photo file blob and formdata
+ *
+ * Ref:
+ * - canvasRef: holds the current reference for the canvas
+ */
+
+//TODO: Change the functionality to hold the blob in React state.
 
 function UploadForm() {
-  const canvasRef = useRef();
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const canvasRef = useRef();
   const navigate = useNavigate();
 
-  console.log('SELECTED PHOTO', selectedPhoto);
-
+  /** Handle chosen photo form submit. */
   function handleSubmit(evt) {
     evt.preventDefault();
+
     const file = evt.target.files[0];
 
     const reader = new FileReader();
+
+    /** Waits for the photo to load then draws an Image class on the canvas.
+     * Update the selected photo state with the newly created blob file.
+     */
     reader.onload = (event) => {
       const img = new Image();
       img.onload = () => {
@@ -46,6 +60,7 @@ function UploadForm() {
     reader.readAsDataURL(file);
   }
 
+  /** Apply a washout filter using Caman. */
   function applyWashOut() {
     window.Caman(`#canvas`, function () {
       this.brightness(10);
@@ -56,6 +71,7 @@ function UploadForm() {
     });
   }
 
+  /** Apply a sepia filter using Caman. */
   function applySepia() {
     window.Caman(`#canvas`, function () {
       this.brightness(10);
@@ -66,6 +82,7 @@ function UploadForm() {
     });
   }
 
+  /** Apply a hot Rithm filter using Caman. */
   function applyRithm() {
     window.Caman(`#canvas`, function () {
       this.vibrance(81);
@@ -77,6 +94,17 @@ function UploadForm() {
     });
   }
 
+  /** Remove the currently applied filter using Caman. */
+  function removeFilter() {
+    window.Caman(`#canvas`, function () {
+      this.revert();
+    });
+  }
+
+  /** Handle photo upload. Append any filters that were applied to the formdata,
+   * add the blob and send the photo to the backend API.
+   * Redirect to the photos page.
+   */
   async function handleUpload(evt) {
     evt.preventDefault();
     if (selectedPhoto) {
@@ -115,58 +143,31 @@ function UploadForm() {
             <canvas
               ref={canvasRef}
               id="canvas"
-              style={{maxInlineSize: '500px'}}>
+              style={{ maxInlineSize: '500px' }}>
             </canvas>
           </div>
-          <div>
-            <button className="upload-photo btn btn-ig" onClick={handleUpload}>
-              Upload
-            </button>
-          </div>
+
         </div>
       </div>
 
-      <div className="row filter-btns">
+      <div className="row filter-btns m-3">
         <div className="col-md-10 m-auto">
-          <button className="m-3 btn btn-ig" onClick={applyWashOut}>Washout</button>
+          <button className="m-3 btn btn-ig" onClick={applyWashOut}>
+            Washout
+          </button>
           <button className="m-3 btn btn-ig" onClick={applySepia}>Sepia</button>
           <button className="m-3 btn btn-ig" onClick={applyRithm}>Rithm</button>
         </div>
+      </div>
+      <div>
+        <button className="upload-photo btn btn-ig m-2" onClick={handleUpload}>
+          Upload
+        </button>
+        <button className="btn btn-ig m-2" onClick={removeFilter}>
+          Clear
+        </button>
       </div>
     </div>
   );
 }
 export default UploadForm;
-
-
-/*   useEffect(() => {
-    window.Caman(`#robert`, function () {
-      this.brightness(10);
-      this.contrast(30);
-      this.sepia(60);
-      this.saturation(-30);
-      this.render();
-    });
-  }, [robertImage]);
-
- <div className="row">
-        <img
-          src={robertImage}
-          alt=""
-          style={{ width: 200, height: 200 }}
-        />
-        <img
-          id="robert"
-          // ref={robert}
-          src={robertImage}
-          alt=""
-          style={{ width: 200, height: 200 }}
-        />
-      </div>
-
- ******* function CODE STARTS HERE
-
-        formData.append('image', selectedPhoto);
-
-  ****** FUNCTION CODE ENDS HERE
-*/
