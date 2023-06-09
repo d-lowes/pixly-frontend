@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { PixlyApi } from "./API";
 import PhotoCard from "./PhotoCard";
+import prisonmike from "./images/prisonmike.jpeg";
+import "./Photos.css";
 
 /** Component for rendering all the uploaded photos from the S3 bucket.
  *
@@ -37,12 +39,15 @@ function Photos() {
     );
   }
 
-  if(isLoading) {
+  if (isLoading) {
     return (
       <div>
-        <h1>Loading...</h1>
+        <h1 className="mb-5">Loading...</h1>
+        <div className="spinning-image-container m-5">
+          <img src={prisonmike} alt="Spinning Mike" className="spinning-image" />
+        </div>
       </div>
-    )
+    );
   }
 
   return (
