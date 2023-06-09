@@ -46,15 +46,32 @@ function UploadForm() {
     reader.readAsDataURL(file);
   }
 
-  function addFilter() {
-    const edit = window.Caman(`#canvas`, function () {
+  function applyWashOut() {
+    window.Caman(`#canvas`, function () {
       this.brightness(10);
       this.contrast(30);
       this.sepia(60);
       this.saturation(-30);
       this.render();
     });
-
+  }
+  function newFilter1() {
+    window.Caman(`#canvas`, function () {
+      this.brightness(10);
+      this.contrast(30);
+      this.sepia(60);
+      this.saturation(-30);
+      this.render();
+    });
+  }
+  function newFilter2() {
+    window.Caman(`#canvas`, function () {
+      this.brightness(10);
+      this.contrast(30);
+      this.sepia(60);
+      this.saturation(-30);
+      this.render();
+    });
   }
 
   async function handleUpload(evt) {
@@ -66,7 +83,6 @@ function UploadForm() {
         // Create a FormData object to send the Blob as part of the request
         const formData = new FormData();
         formData.append('image', blob);
-        console.log("formdata===", formData);
 
         await PixlyApi.uploadPhoto(formData);
         navigate('/photos');
@@ -100,7 +116,7 @@ function UploadForm() {
             </canvas>
           </div>
           <div>
-            <button className="upload-photo" onClick={handleUpload}>
+            <button className="upload-photo btn" onClick={handleUpload}>
               Upload
             </button>
           </div>
@@ -109,11 +125,12 @@ function UploadForm() {
 
       <div className="row filter-btns">
         <div className="col-md-10 m-auto">
-          <button className="m-3" onClick={addFilter}>Add filter</button>
+          <button className="m-3 btn" onClick={applyWashOut}>Washout</button>
+          <button className="m-3 btn" onClick={newFilter1}>Sepia</button>
+          <button className="m-3 btn" onClick={newFilter2}>Rithm</button>
         </div>
       </div>
     </div>
-
   );
 }
 export default UploadForm;
