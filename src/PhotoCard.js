@@ -1,6 +1,15 @@
 import React from "react";
 import './PhotoCard.css'
 
+/** Renders a photo card
+ * 
+ * Props:
+ * -photo => {objectURL: '', metadata: '', photoId: ''}
+ * 
+ * -handleDelete => function 
+ * 
+ * Photos -> PhotoCard
+ */
 function PhotoCard({ photo, handleDelete }) {
 
     return (

@@ -48,17 +48,15 @@ class PixlyApi {
     return res.photo;
   }
 
-  /** Get a single photo. */
+  /** Upload a single photo. */
   static async uploadPhoto(photo) {
     let res = await this.request(`upload`, photo, "post");
-    // let res = await axios.post(`{}`)
     return res.photo;
   }
 
-  /** Get a single photo. */
+  /** Delete a single photo. */
   static async deletePhoto(photoId) {
     let res = await this.request(`photos/${photoId}`, {}, "delete");
-    // let res = await axios.post(`{}`)
     return res.photo;
   }
 }

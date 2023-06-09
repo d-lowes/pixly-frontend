@@ -2,6 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import './NavBarv2.css';
 
+/** Loads Home page 
+ * 
+ * App -> Home
+ */
+
 function Home() {
     return (
         <div>

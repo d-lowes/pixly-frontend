@@ -5,6 +5,11 @@ import Home from './Home';
 import Photos from './Photos';
 import UploadForm from './UploadForm';
 
+/** Loads initial app 
+ * 
+ * App -> {Home, Photos, UploadForm}
+ */
+
 function App() {
 
   return (
@@ -13,9 +18,9 @@ function App() {
       <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/photos" element={<Photos />} />
+          {/* TODO: make single page for a single photo */}
           {/* // <Route path="/photos/:id" element={<Photo />} /> */}
           // <Route path="/upload" element={<UploadForm />} />
-          {/* // <Route path="*" element={<Home />} /> */}
         </Routes>
     </div>
   );
