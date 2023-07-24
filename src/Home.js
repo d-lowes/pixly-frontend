@@ -1,19 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './NavBarv2.css';
+import './Home.css';
 
-/** Loads Home page 
- * 
+/** Loads Home page
+ *
  * App -> Home
  */
 
 function Home() {
     return (
         <div>
-            <img
-                src="//media.tenor.com/vbtG_dc8u9QAAAAC/the-office-michael-scott.gif"
-                alt="hot" />
-            {/* <h3>Welcome to Pix.ly</h3> */}
+            <h1 className="home-title">Welcome to Pix.ly!</h1>
+            <div>
+                <Link className="btn-home" to="/upload">Try it out!</Link>
+            </div>
         </div>
     );
 }

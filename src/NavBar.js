@@ -4,15 +4,15 @@ import './NavBarv2.css';
 
 /** Display NavBar with links to Home, and Photos.
  *
- * App -> NavBar 
+ * App -> NavBar
 */
 function NavBar() {
   return (
     <nav className="navigation navbar navbar-expand-md">
       <div className="container-fluid">
-          <Link className="active" to="/">Michae.ly</Link>
+          <Link className="active" to="/">Pix.ly</Link>
           <NavLink className="active" to="/photos">Photos</NavLink>
-          <NavLink className="active" to="/upload">Upload your own!</NavLink>
+          <NavLink className="active" to="/upload">Upload</NavLink>
       </div>
     </nav>
   );
